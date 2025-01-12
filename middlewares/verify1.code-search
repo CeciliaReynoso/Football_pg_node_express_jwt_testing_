@@ -1,0 +1,9 @@
+# Query: verify
+# ContextLines: 1
+
+1 resultado - 1 archivo
+
+middlewares\authMiddlewares.js:
+  12      try {
+  13:         const decoded = jwt.verify(token, secretKey, { algorithms: ['HS256'] });
+  14          req.user = decoded;
