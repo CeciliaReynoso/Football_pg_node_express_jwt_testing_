@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = require('../index'); // Asegúrate de exportar tu app en index.js
+const app = require('../index'); 
 
 describe('API Tests', () => {
     let token;
@@ -16,7 +16,7 @@ describe('API Tests', () => {
             .send({ username: 'admin', password: '1234' });
         expect(response.status).toBe(200);
         expect(typeof response.body).toBe('object');
-        token = response.body.token; // Save the token for later use
+        token = response.body.token; // Guarda el token para su uso en otros test. 
     });
 
     it('POST /login with incorrect credentials should return status code 401', async () => {
@@ -29,7 +29,7 @@ describe('API Tests', () => {
     it('POST /equipos/:teamID/jugadores with valid token should return status code 201', async () => {
         const response = await request(app)
             .post('/equipos/1/jugadores')
-            .set('Authorization', `Bearer ${token}`) // Use the token generated from login
+            .set('Authorization', `Bearer ${token}`) // uso del token generado desde el login
             .send({ name: 'New Player', position: 1 });
         expect(response.status).toBe(201);
     });
